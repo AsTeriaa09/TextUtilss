@@ -1,30 +1,13 @@
 import React, { useState } from "react";
 
-export default function About() {
+export default function About(props) {
      
-    let [mode,setMode] =useState(
-    {
-        color:'black',
-        backgroundColor:'white'
-    })
-
-    const [btnText,setBtnText] = useState("Enable Dark Mode")
-
-    const handleMode = ()=>{
-        if(mode.color == 'black'){
-            setMode({
-                color:'white',
-                backgroundColor:'black'
-            })
-            setBtnText("Enable light Mode")
-        }else{
-            setMode({
-                color:'black',
-                backgroundColor:'white'
-            })
-            setBtnText("Enable dark Mode")
-        }
+    let mode = {
+      color: props.mode === 'dark'?'white':'black',
+      backgroundColor: props.mode === 'dark'?'black':'white'
     }
+
+
 
   return (
     <>
@@ -130,7 +113,6 @@ export default function About() {
             </div>
           </div>
         </div>
-        <button type="button" className="btn btn-warning mb-2" onClick={handleMode}>{btnText}</button>
       </div>
     </>
   );
